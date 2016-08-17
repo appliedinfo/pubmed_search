@@ -9,6 +9,8 @@ from database import DatabaseElasticSearch
 import simplejson as json
 from havoc_search import search_keyword
 # Create your views here.
+import re
+
 
 class SearchView(TemplateView):
 
@@ -90,9 +92,18 @@ class SearchView(TemplateView):
                 t["score"] = x["_score"]
                 rr.append(t)
             fr = { "meta": summary, "results":rr}#[x["_source"] for x in hits]}
-            # for key_var in key_variations:
-            #     if key_var.lower() in fr["results"]["abstract"].lower()
-            #         fr["results"]["abstract"].replace(key_var,)
+            # final_results = []
+            # for rr in fr["results"]:
+            #     # print 
+            #     for key_var in key_variations:
+            #         # print rr["abstract"]
+            #         if key_var.lower() in rr["abstract"].lower():
+            #             print "found"
+            #             # rr["abstract"].lower().replace(key_var.lower(),)
+            #             repl  = '<span style="background-color:yellow;">'+key_var+'</span>'
+            #             abstract = re.sub(key_var.lower(), repl, rr["abstract"].lower())
+            #             rr["abstract"] = abstract
+            #         final_results.append(rr)   
             context = {
                         'form': self.form() if form is None else form,"results":fr["results"],
                         "words":' '.join(key_variations),"post":True,"keywords":','.join(key_variations)}

@@ -15,7 +15,7 @@ class SearchForm(forms.Form):
         attrs={
                'class': 'form-control',
                'id': 'terms',
-               'placeholder':"e.g abc,txt abc"
+               'placeholder':"e.g septra"
                }))
     
     # password = forms.CharField(widget=forms.PasswordInput(

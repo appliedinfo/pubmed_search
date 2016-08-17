@@ -40,7 +40,7 @@
     <tbody>
     {% for i in results %}
 
-      <tr><td>{{i.pmid}}</td><td id="{{i.pmid}}">{{i.abstract}}</td><td>{{i.score}}</td></tr>
+      <tr><td>{{i.pmid}}</td><td id="text">{{i.abstract}}</td><td>{{i.score}}</td></tr>
     {% endfor %}
     </tbody>
   </table>
@@ -53,7 +53,7 @@
 {% endif %}
 <script type="text/javascript">
 
-  var myHilitor = new Hilitor("text");
+  var myHilitor = new Hilitor("content")
   myHilitor.apply("{{words}}");
 
 </script>
