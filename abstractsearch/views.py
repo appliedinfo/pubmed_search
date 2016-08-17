@@ -48,9 +48,9 @@ class SearchView(TemplateView):
             key_variations.extend(key["keyword_variation"])
         key_variations = list(set([k.lower() for k in key_variations]))
         queries = []
-
+        key_variations = key_variations[0:20]
         for p in key_variations:
-            queries.append({ "match": { "abstract": p }})
+            queries.append({ "match_phrase": { "abstract": p }})
 
 
 
@@ -62,7 +62,7 @@ class SearchView(TemplateView):
         }
         context = {}
         # results = es.fetch('pubmed','five_yr',dsl_query)
-        results = es.fetch('pubmed', 'five_yr', query, 0, 50,fields=['pmid',"abstract"])
+        results = es.fetch('pubmed', 'five_yr', query, 0, 20,fields=['pmid',"abstract"])
         # print results
         if results.get("status","success") == "success":
             hits = results['hits']['hits']
@@ -95,7 +95,8 @@ class SearchView(TemplateView):
  
             context = {
                         'form': self.form() if form is None else form,"results":fr["results"],
-                        "words":' '.join(key_variations),"post":True,"keywords":','.join(key_variations)}
+                        "words":' '.join(key_variations),"post":True,"keywords":','.join(key_variations),
+                        "total":total,"showing":len(fr["results"])}
         # fr =  { "meta": {"message":"error",}, "results":[]}
             return self.render_to_response(context)
         else:

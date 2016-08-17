@@ -28,11 +28,11 @@
 	</div>
 	</div>
 {%if post%}
-<span class="center">Search is based on keywords: {{keywords}}<span>
+<span class="center" style="background-color:yellow;"><em>Keywords Variations Found:</em>{{keywords}}<span>
 {%if results %}
 
-<div>
-
+<div class="center">
+<h6 style="float: right;">Showing Top {{showing}} of {{total}}</h6>
  <table class="table table-striped table-hover">
     <thead>
       <tr><th>PMID</th><th>Abstract</th><th>Score</th></tr>

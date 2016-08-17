@@ -7,7 +7,7 @@ class DatabaseElasticSearch():
 
     def __init__(self, host="127.0.0.1", port=9200, timeout=50):
         # self.es = elasticsearch.Elasticsearch()
-        self.es = elasticsearch.Elasticsearch([{'host': host, 'port': port}])
+        self.es = elasticsearch.Elasticsearch([{'host': host, 'port': port,"timeout":50}])
 
 
     def save(self, json_data, index, doc_type, doc_id):
@@ -49,7 +49,7 @@ class DatabaseElasticSearch():
         index  = index+"_"+doc_type
         try: 
             print "Query to ES",body, index,doc_type
-            es_result = self.es.search(index=index, doc_type=doc_type, body=body,explain=True)
+            es_result = self.es.search(index=index, doc_type=doc_type, body=body,explain=True,request_timeout=500)
             # print es_result,"********"
             return es_result
         except Exception as e:
