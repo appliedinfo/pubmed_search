@@ -1,0 +1,66 @@
+/*main*/
+.header-row{
+	margin-top: 12px;
+	margin-bottom: 12px;
+}
+.header-logo{
+	width: 200px;
+	height: 50px;
+}
+
+.btn-color {
+    border-color: #ff6828;
+    background-color: #ff6828;
+    color: #ffffff;
+}
+.panel-yellow{
+	background-color: #ffc800; 
+}
+
+.panel-green{
+	background-color: #33b73d; 
+}
+.panel-red{
+	background-color: #ff8100; 
+}
+/*paddings*/
+.top-5x{
+	margin-top: 5px;
+}
+.top-10x{
+	margin-top: 10px;
+}
+.top-20x{
+	margin-top: 20px;
+}
+.top-30x{
+	margin-top: 30px;
+}
+.top-50x{
+	margin-top: 50px;
+}
+.top-100x{
+	margin-top: 100px;
+}
+.bottom-5x{
+	margin-bottom: 5px;
+}
+.bottom-10x{
+	margin-bottom: 10px;
+}
+.bottom-20x{
+	margin-bottom: 20px;
+}
+.bottom-30x{
+	margin-bottom: 30px;
+}
+.bottom-50x{
+	margin-bottom: 50px;
+}
+.bottom-100x{
+	margin-bottom: 100px;
+}
+
+
+
+
