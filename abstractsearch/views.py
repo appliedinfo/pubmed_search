@@ -92,27 +92,19 @@ class SearchView(TemplateView):
                 t["score"] = x["_score"]
                 rr.append(t)
             fr = { "meta": summary, "results":rr}#[x["_source"] for x in hits]}
-            # final_results = []
-            # for rr in fr["results"]:
-            #     # print 
-            #     for key_var in key_variations:
-            #         # print rr["abstract"]
-            #         if key_var.lower() in rr["abstract"].lower():
-            #             print "found"
-            #             # rr["abstract"].lower().replace(key_var.lower(),)
-            #             repl  = '<span style="background-color:yellow;">'+key_var+'</span>'
-            #             abstract = re.sub(key_var.lower(), repl, rr["abstract"].lower())
-            #             rr["abstract"] = abstract
-            #         final_results.append(rr)   
+ 
             context = {
                         'form': self.form() if form is None else form,"results":fr["results"],
                         "words":' '.join(key_variations),"post":True,"keywords":','.join(key_variations)}
         # fr =  { "meta": {"message":"error",}, "results":[]}
-        return self.render_to_response(context)
+            return self.render_to_response(context)
+        else:
+            context = {"form":self.form,"message":"error while Processing"}
+            return self.render_to_response(context)
         # return HttpResponse(json.dumps(fr), content_type='application/json')
 
 
 
 
 
-        return HttpResponse(context)
+        # return HttpResponse(context)
