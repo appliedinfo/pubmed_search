@@ -60,7 +60,7 @@ class SearchView(TemplateView):
         }
         context = {}
         # results = es.fetch('pubmed','five_yr',dsl_query)
-        results = es.fetch('pubmed', 'five_yr', query, 0, 20,fields=['pmid',"abstract"])
+        results = es.fetch('pubmed', 'five_yr', query, 0, 50,fields=['pmid',"abstract"])
         # print results
         if results.get("status","success") == "success":
             hits = results['hits']['hits']
